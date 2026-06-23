@@ -1,19 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Rye&family=IM+Fell+English+SC&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap");
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-blood: var(--blood);
+  --color-parchment: var(--parchment);
+  --color-ink: var(--ink);
+  --color-gold: var(--gold);
+  --font-display: var(--font-display);
+  --font-serif: var(--font-serif);
+  --font-telegraph: var(--font-telegraph);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Western palette */
+  --blood: oklch(0.55 0.22 27);          /* #E51B24 */
+  --ink: oklch(0.18 0.005 30);           /* #1A1A1A */
+  --parchment: oklch(0.93 0.035 85);     /* #F1EAD6 */
+  --gold: oklch(0.78 0.14 80);
+
+  --background: var(--parchment);
+  --foreground: var(--ink);
+  --card: oklch(0.95 0.025 85);
+  --card-foreground: var(--ink);
+  --popover: var(--parchment);
+  --popover-foreground: var(--ink);
+  --primary: var(--blood);
+  --primary-foreground: var(--parchment);
+  --secondary: oklch(0.25 0.01 30);
+  --secondary-foreground: var(--parchment);
+  --muted: oklch(0.88 0.03 85);
+  --muted-foreground: oklch(0.35 0.02 40);
+  --accent: var(--gold);
+  --accent-foreground: var(--ink);
+  --destructive: var(--blood);
+  --destructive-foreground: var(--parchment);
+  --border: oklch(0.4 0.04 40 / 30%);
+  --input: oklch(0.4 0.04 40 / 30%);
+  --ring: var(--blood);
+
+  --font-display: "Rye", "IM Fell English SC", serif;
+  --font-serif: "Libre Baskerville", Georgia, serif;
+  --font-telegraph: "Special Elite", "Courier New", monospace;
+}
+
+.dark {
+  --background: oklch(0.14 0.005 30);
+  --foreground: var(--parchment);
+  --card: oklch(0.2 0.008 30);
+  --card-foreground: var(--parchment);
+  --popover: oklch(0.18 0.005 30);
+  --popover-foreground: var(--parchment);
+  --primary: var(--blood);
+  --primary-foreground: var(--parchment);
+  --secondary: oklch(0.25 0.01 30);
+  --secondary-foreground: var(--parchment);
+  --muted: oklch(0.25 0.008 30);
+  --muted-foreground: oklch(0.7 0.02 80);
+  --accent: var(--gold);
+  --accent-foreground: var(--ink);
+  --border: oklch(0.93 0.035 85 / 15%);
+  --input: oklch(0.93 0.035 85 / 15%);
+  --ring: var(--blood);
+}
 
 @layer base {
-  * {
+  * { 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    border-color: var(--color-border); 
   }
-
+  html { scroll-behavior: smooth; }
   body {
-    background-color: #1A1A1A;
-    color: #F1EAD6;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-serif);
+    overflow-x: hidden;
   }
+  ::selection { background: var(--blood); color: var(--parchment); }
 }
 
 @layer utilities {
+  .font-western { font-family: var(--font-display); letter-spacing: 0.02em; }
+  .font-telegraph { font-family: var(--font-telegraph); }
+
+  /* Keep existing Loading Screen utilities */
   .progress-fill-texture {
     background-color: #E51B24;
     background-image: repeating-linear-gradient(
@@ -24,6 +123,60 @@
       rgba(0, 0, 0, 0.2) 4px
     );
   }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 1.5s ease-in-out infinite;
+  }
+}
+
+/* Film grain overlay */
+.film-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+.grain-fixed {
+  position: fixed; inset: 0; pointer-events: none; z-index: 100;
+  opacity: 0.07; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.paper {
+  background-color: var(--parchment);
+  background-image:
+    radial-gradient(ellipse at top, rgba(0,0,0,0.15), transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(120,60,20,0.2), transparent 60%),
+    repeating-linear-gradient(45deg, rgba(120,60,20,0.04) 0 2px, transparent 2px 6px);
+  color: var(--ink);
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5), inset 0 0 60px rgba(120,60,20,0.25);
+}
+
+.poster-edges {
+  -webkit-mask-image:
+    radial-gradient(circle at 0% 0%, transparent 0 8px, #000 12px),
+    radial-gradient(circle at 100% 0%, transparent 0 8px, #000 12px),
+    radial-gradient(circle at 0% 100%, transparent 0 8px, #000 12px),
+    radial-gradient(circle at 100% 100%, transparent 0 8px, #000 12px),
+    linear-gradient(#000,#000);
+  -webkit-mask-composite: source-over;
+}
+
+.ornate-border {
+  border: 3px double var(--ink);
+  outline: 1px solid var(--ink);
+  outline-offset: 6px;
+}
+
+.bullet-divider {
+  display: flex; align-items: center; gap: 1rem; color: var(--ink);
+}
+.bullet-divider::before, .bullet-divider::after {
+  content: ""; flex: 1; height: 2px; background: currentColor;
 }
 
 @keyframes pulse-slow {
@@ -31,8 +184,67 @@
   50% { opacity: 0.8; }
 }
 
-@layer utilities {
-  .animate-pulse-slow {
-    animation: pulse-slow 1.5s ease-in-out infinite;
-  }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin-slow 1.6s linear infinite; }
+
+/* Atmospheric Haze Pulse */
+@keyframes haze-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
 }
+.haze-pulse { animation: haze-pulse 8s ease-in-out infinite; }
+
+/* Slow Dust Particle Drift */
+@keyframes dust-drift {
+  from { transform: translateY(0) translateX(0); }
+  to { transform: translateY(-100px) translateX(50px); }
+}
+.dust-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(241, 234, 214, 0.4); /* F1EAD6 */
+  filter: blur(1px);
+  animation: dust-drift 15s linear infinite;
+  pointer-events: none;
+}
+
+/* Sequential Fade Ups */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-content-hide { opacity: 0; }
+.hero-fade-up-1 { animation: hero-fade-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; animation-delay: 1.5s; }
+.hero-fade-up-2 { animation: hero-fade-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; animation-delay: 1.8s; }
+.hero-fade-up-3 { animation: hero-fade-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; animation-delay: 2.1s; }
+.hero-fade-up-4 { animation: hero-fade-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; animation-delay: 2.4s; }
+
+/* Automated Cinematic Animations */
+@keyframes cinematic-zoom-pan {
+  from { transform: scale(1) translateX(0); }
+  to { transform: scale(1.15) translateX(-4%); }
+}
+.cinematic-zoom-pan {
+  animation: cinematic-zoom-pan 7.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  transform-origin: center top;
+}
+
+@keyframes bloom-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+.bloom-pulse { animation: bloom-pulse 6s ease-in-out infinite; }
+
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal { opacity: 0; }
+.reveal.in { animation: fade-up 0.9s ease-out forwards; }
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.92; }
+}
+.flicker { animation: flicker 3s ease-in-out infinite; }

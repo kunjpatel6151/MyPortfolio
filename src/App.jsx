@@ -1,18 +1,20 @@
 import { useState } from 'react'
 import './styles/globals.css'
 import LoadingScreen from './components/LoadingScreen'
+import Portfolio from './components/Portfolio'
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true)
+  const [showLoader, setShowLoader] = useState(true)
 
   return (
     <>
-      {isLoading ? (
-        <LoadingScreen onComplete={() => setIsLoading(false)} />
-      ) : (
-        <div className="min-h-screen bg-rdr-charcoal text-rdr-parchment flex items-center justify-center font-body">
-          <h1 className="text-4xl font-display text-rdr-red">Red Dead Redemption 2 Portfolio Setup Successful</h1>
-        </div>
+      {/* Portfolio is ALWAYS mounted so it paints during the loading screen. */}
+      <Portfolio />
+
+      {/* Loading screen is a fixed overlay on top. When it finishes its own
+          fade-out animation it calls onComplete, and we unmount it. */}
+      {showLoader && (
+        <LoadingScreen onComplete={() => setShowLoader(false)} />
       )}
     </>
   )
