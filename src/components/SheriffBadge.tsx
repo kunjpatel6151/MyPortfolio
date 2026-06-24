@@ -19,7 +19,7 @@ export function SheriffBadge({ initials = "JD", size = 44 }: { initials?: string
         <circle key={i} cx={x} cy={y} r="3" fill="#f1ead6" stroke="#2a1a08" strokeWidth="1"/>
       ))}
       <circle cx="50" cy="52" r="16" fill="#1a1a1a" stroke="#f1ead6" strokeWidth="1.5"/>
-      <text x="50" y="58" textAnchor="middle" fontSize="14" fill="#f1ead6" fontFamily="Rye, serif" fontWeight="700">
+      <text x="50" y="58" textAnchor="middle" fontSize="14" fill="#f1ead6" fontFamily="Chinese Rocks, sans-serif" fontWeight="400">
         {initials}
       </text>
     </svg>

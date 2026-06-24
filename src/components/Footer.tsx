@@ -17,8 +17,8 @@ export function Footer() {
           </g>
         </svg>
         <p className="font-western text-xl">Jesse Drifter</p>
-        <p className="font-telegraph text-xs tracking-[0.4em] text-[#E51B24]">OUTLAWS TO THE END</p>
-        <p className="font-serif text-[11px] text-[#F1EAD6]/40 mt-4">
+        <p className="font-ui text-xs tracking-[0.4em] text-[#E51B24]">OUTLAWS TO THE END</p>
+        <p className="font-body text-[11px] text-[#F1EAD6]/40 mt-4">
           © {new Date().getFullYear()} — Built with bullets, beans, and TypeScript.
         </p>
       </div>

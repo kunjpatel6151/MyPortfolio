@@ -45,7 +45,7 @@ export function Navbar() {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="relative font-telegraph text-sm tracking-[0.2em] uppercase text-[#F1EAD6]/85 hover:text-[#E51B24] transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-2 after:h-[2px] after:w-0 after:bg-[#E51B24] hover:after:w-full after:transition-all after:duration-300"
+                className="relative font-ui text-sm tracking-[0.2em] uppercase text-[#F1EAD6]/85 hover:text-[#E51B24] transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-2 after:h-[2px] after:w-0 after:bg-[#E51B24] hover:after:w-full after:transition-all after:duration-300"
               >
                 {l.label}
               </a>
@@ -79,7 +79,7 @@ export function Navbar() {
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block font-western text-xl text-[#1A1A1A] hover:text-[#E51B24]"
+                  className="block font-subheading text-xl text-[#1A1A1A] hover:text-[#E51B24]"
                 >
                   {l.label}
                 </a>

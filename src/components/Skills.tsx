@@ -64,7 +64,7 @@ function AmmoBelt({ level }: { level: number }) {
           }`}
         />
       ))}
-      <span className="ml-2 font-telegraph text-xs text-[#F1EAD6]/60">{level}</span>
+      <span className="ml-2 font-ui text-xs text-[#F1EAD6]/60">{level}</span>
     </div>
   );
 }
@@ -79,11 +79,11 @@ export function Skills() {
     >
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <p className="font-telegraph text-[#E51B24] tracking-[0.4em] text-xs uppercase">
+          <p className="font-ui text-[#E51B24] tracking-[0.4em] text-xs uppercase">
             — Inventory —
           </p>
           <h2 className="font-western text-5xl sm:text-6xl mt-3">The Saddlebag</h2>
-          <p className="font-serif italic text-[#F1EAD6]/60 mt-3 max-w-xl mx-auto">
+          <p className="font-body italic text-[#F1EAD6]/60 mt-3 max-w-xl mx-auto">
             Every outlaw needs his tools. Here's what I keep loaded and ready.
           </p>
         </div>
@@ -99,12 +99,12 @@ export function Skills() {
                 <span className="w-11 h-11 flex items-center justify-center bg-[#E51B24]/15 border border-[#E51B24]/40 text-[#E51B24] group-hover:bg-[#E51B24] group-hover:text-[#F1EAD6] transition-all">
                   <Icon size={22} />
                 </span>
-                <h3 className="font-western text-2xl">{name}</h3>
+                <h3 className="font-subheading text-2xl">{name}</h3>
               </div>
               <ul className="space-y-3">
                 {items.map((it) => (
                   <li key={it.label}>
-                    <div className="flex justify-between text-sm font-telegraph tracking-wider">
+                    <div className="flex justify-between text-sm font-ui tracking-wider">
                       <span>{it.label}</span>
                     </div>
                     <AmmoBelt level={it.level} />

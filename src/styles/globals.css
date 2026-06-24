@@ -1,4 +1,76 @@
-@import url("https://fonts.googleapis.com/css2?family=Rye&family=IM+Fell+English+SC&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap");
+/* ══════════════════════════════════════════════════════════
+   LOCAL FONT DECLARATIONS
+   All fonts loaded from src/assets/Fonts — zero external requests
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Heading: Chinese Rocks ── */
+@font-face {
+  font-family: "Chinese Rocks";
+  src: url("../assets/Fonts/Heading/chinese rocks rg.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Sub-Heading: Rye ── */
+@font-face {
+  font-family: "Rye";
+  src: url("../assets/Fonts/Sub-Heading/Rye/Rye-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Sub-Heading: Oswald (Variable) ── */
+@font-face {
+  font-family: "Oswald";
+  src: url("../assets/Fonts/Sub-Heading/Oswald/Oswald-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Body: Courier Prime ── */
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../assets/Fonts/Body/CourierPrime-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../assets/Fonts/Body/CourierPrime-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../assets/Fonts/Body/CourierPrime-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../assets/Fonts/Body/CourierPrime-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ── List / Accent: Pinyon Script ── */
+@font-face {
+  font-family: "Pinyon Script";
+  src: url("../assets/Fonts/List/PinyonScript-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ══════════════════════════════════════════════════════════ */
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -32,9 +104,11 @@
   --color-parchment: var(--parchment);
   --color-ink: var(--ink);
   --color-gold: var(--gold);
-  --font-display: var(--font-display);
-  --font-serif: var(--font-serif);
-  --font-telegraph: var(--font-telegraph);
+  --font-heading: var(--font-heading);
+  --font-subheading: var(--font-subheading);
+  --font-body: var(--font-body);
+  --font-ui: var(--font-ui);
+  --font-script: var(--font-script);
 }
 
 :root {
@@ -66,9 +140,12 @@
   --input: oklch(0.4 0.04 40 / 30%);
   --ring: var(--blood);
 
-  --font-display: "Rye", "IM Fell English SC", serif;
-  --font-serif: "Libre Baskerville", Georgia, serif;
-  --font-telegraph: "Special Elite", "Courier New", monospace;
+  /* Typography system */
+  --font-heading: "Chinese Rocks", "Impact", sans-serif;
+  --font-subheading: "Rye", "Playfair Display", serif;
+  --font-body: "Courier Prime", "Courier New", monospace;
+  --font-ui: "Oswald", "Helvetica Neue", sans-serif;
+  --font-script: "Pinyon Script", "Georgia", cursive;
 }
 
 .dark {
@@ -102,15 +179,19 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: var(--font-serif);
+    font-family: var(--font-body);
     overflow-x: hidden;
   }
   ::selection { background: var(--blood); color: var(--parchment); }
 }
 
 @layer utilities {
-  .font-western { font-family: var(--font-display); letter-spacing: 0.02em; }
-  .font-telegraph { font-family: var(--font-telegraph); }
+  .font-western    { font-family: var(--font-heading); letter-spacing: 0.02em; }
+  .font-subheading { font-family: var(--font-subheading); }
+  .font-body       { font-family: var(--font-body); }
+  .font-ui         { font-family: var(--font-ui); }
+  .font-script     { font-family: var(--font-script); }
+
 
   /* Keep existing Loading Screen utilities */
   .progress-fill-texture {

@@ -12,8 +12,11 @@ export default {
         'rdr-white': '#FFFFFF',
       },
       fontFamily: {
-        display: ['"Rye"', 'cursive'],
-        body: ['"Libre Baskerville"', 'serif'],
+        western: ['"Chinese Rocks"', 'Impact', 'sans-serif'],
+        subheading: ['"Rye"', '"Playfair Display"', 'serif'],
+        body: ['"Courier Prime"', '"Courier New"', 'monospace'],
+        ui: ['"Oswald"', '"Helvetica Neue"', 'sans-serif'],
+        script: ['"Pinyon Script"', 'Georgia', 'cursive'],
       },
     },
   },

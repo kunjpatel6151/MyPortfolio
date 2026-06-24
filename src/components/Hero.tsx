@@ -110,26 +110,26 @@ export function Hero() {
 
       {/* Hero Content - Sequential Fade Up Animation */}
       <div className="relative z-20 h-full flex flex-col justify-end pb-24 sm:pb-32 px-6 sm:px-12 max-w-7xl mx-auto">
-        <p className={`font-telegraph text-[#E51B24] tracking-[0.4em] text-xs sm:text-sm mb-4 uppercase hero-content-hide ${isLoaded ? 'hero-fade-up-1' : ''}`}>
+        <p className={`font-script text-[#E51B24] tracking-[0.2em] text-sm sm:text-base mb-4 hero-content-hide ${isLoaded ? 'hero-fade-up-1' : ''}`}>
           ★ A Rockstar Of Code ★
         </p>
         <h1 className={`font-western text-[#F1EAD6] text-5xl sm:text-7xl lg:text-8xl leading-[0.95] drop-shadow-[0_6px_24px_rgba(0,0,0,0.8)] hero-content-hide ${isLoaded ? 'hero-fade-up-2' : ''}`}>
           Kunj Patel
         </h1>
-        <p className={`mt-6 max-w-xl font-serif text-base sm:text-lg text-[#F1EAD6]/85 italic leading-relaxed hero-content-hide ${isLoaded ? 'hero-fade-up-3' : ''}`}>
+        <p className={`mt-6 max-w-xl font-body text-base sm:text-lg text-[#F1EAD6]/85 italic leading-relaxed hero-content-hide ${isLoaded ? 'hero-fade-up-3' : ''}`}>
           Software outlaw forging full-stack frontiers — riding the line between
           frontend artistry and backend grit since the early days of the gold rush.
         </p>
         <div className={`mt-10 flex flex-wrap gap-4 hero-content-hide ${isLoaded ? 'hero-fade-up-4' : ''}`}>
           <a
             href="#projects"
-            className="group relative font-western tracking-wide text-sm bg-[#E51B24] text-[#F1EAD6] px-8 py-4 border-2 border-[#F1EAD6]/20 hover:bg-[#F1EAD6] hover:text-[#1A1A1A] transition-all duration-300 shadow-[0_8px_30px_rgba(229,27,36,0.45)]"
+            className="group relative font-subheading tracking-wide text-sm bg-[#E51B24] text-[#F1EAD6] px-8 py-4 border-2 border-[#F1EAD6]/20 hover:bg-[#F1EAD6] hover:text-[#1A1A1A] transition-all duration-300 shadow-[0_8px_30px_rgba(229,27,36,0.45)]"
           >
             View The Bounties
           </a>
           <a
             href="#contact"
-            className="font-western tracking-wide text-sm border-2 border-[#F1EAD6]/60 text-[#F1EAD6] px-8 py-4 hover:bg-[#F1EAD6] hover:text-[#1A1A1A] transition-all duration-300"
+            className="font-subheading tracking-wide text-sm border-2 border-[#F1EAD6]/60 text-[#F1EAD6] px-8 py-4 hover:bg-[#F1EAD6] hover:text-[#1A1A1A] transition-all duration-300"
           >
             Send A Telegram
           </a>
@@ -138,7 +138,7 @@ export function Hero() {
 
       {/* Scroll indicator - Gentle Pulse */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 text-[#F1EAD6]/70 flex flex-col items-center gap-2">
-        <span className="font-telegraph text-[10px] tracking-[0.3em] opacity-80">RIDE ON</span>
+        <span className="font-ui text-[10px] tracking-[0.3em] opacity-80 uppercase">RIDE ON</span>
         <ChevronDown className="haze-pulse" size={20} />
       </div>
     </section>

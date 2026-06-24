@@ -25,11 +25,11 @@ export function Projects() {
     <section id="projects" ref={ref} className="relative py-28 px-6 bg-[#F1EAD6] reveal">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <p className="font-telegraph text-[#E51B24] tracking-[0.4em] text-xs uppercase">
+          <p className="font-ui text-[#E51B24] tracking-[0.4em] text-xs uppercase">
             — Sheriff's Office —
           </p>
           <h2 className="font-western text-5xl sm:text-6xl mt-3 text-[#1A1A1A]">The Bounty Board</h2>
-          <p className="font-serif italic text-[#1A1A1A]/65 mt-3 max-w-xl mx-auto">
+          <p className="font-body italic text-[#1A1A1A]/65 mt-3 max-w-xl mx-auto">
             Wanted: these projects, brought in dead or alive — preferably shipped.
           </p>
         </div>
@@ -39,7 +39,7 @@ export function Projects() {
             <button
               key={c}
               onClick={() => setActive(c)}
-              className={`font-telegraph tracking-widest text-xs uppercase px-5 py-2 border-2 transition-all ${
+              className={`font-ui tracking-widest text-xs uppercase px-5 py-2 border-2 transition-all ${
                 active === c
                   ? "bg-[#1A1A1A] text-[#F1EAD6] border-[#1A1A1A]"
                   : "border-[#1A1A1A]/40 text-[#1A1A1A] hover:border-[#E51B24] hover:text-[#E51B24]"
@@ -73,31 +73,31 @@ export function Projects() {
                     <div className="my-3 mx-auto w-full aspect-[4/3] bg-gradient-to-br from-[#2a2a2a] to-[#1A1A1A] border-2 border-[#1A1A1A] flex items-center justify-center text-[#E51B24] font-western text-3xl overflow-hidden">
                       {p.title.split(" ").map((w) => w[0]).join("").slice(0,3)}
                     </div>
-                    <h3 className="font-western text-2xl text-center leading-tight">{p.title}</h3>
-                    <p className="font-telegraph text-center text-[11px] tracking-widest text-[#1A1A1A]/70 mt-2">
+                    <h3 className="font-subheading text-2xl text-center leading-tight">{p.title}</h3>
+                    <p className="font-ui text-center text-[11px] tracking-widest text-[#1A1A1A]/70 mt-2">
                       {p.cat.toUpperCase()}
                     </p>
                     <div className="mt-auto pt-3 text-center">
-                      <p className="font-western text-3xl text-[#E51B24]">{p.bounty}</p>
-                      <p className="font-telegraph text-[10px] tracking-widest">REWARD</p>
+                      <p className="font-subheading text-3xl text-[#E51B24]">{p.bounty}</p>
+                      <p className="font-ui text-[10px] tracking-widest">REWARD</p>
                     </div>
                   </div>
                   {/* Back */}
                   <div className="absolute inset-0 bg-[#1A1A1A] text-[#F1EAD6] border-2 border-[#E51B24]/60 p-6 flex flex-col [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                    <h3 className="font-western text-2xl text-[#E51B24]">{p.title}</h3>
-                    <p className="mt-3 font-serif text-sm text-[#F1EAD6]/85 leading-relaxed">{p.desc}</p>
+                    <h3 className="font-subheading text-2xl text-[#E51B24]">{p.title}</h3>
+                    <p className="mt-3 font-body text-sm text-[#F1EAD6]/85 leading-relaxed">{p.desc}</p>
                     <div className="flex flex-wrap gap-2 mt-4">
                       {p.tech.map((t) => (
-                        <span key={t} className="font-telegraph text-[10px] tracking-widest border border-[#F1EAD6]/30 px-2 py-1">
+                        <span key={t} className="font-ui text-[10px] tracking-widest border border-[#F1EAD6]/30 px-2 py-1">
                           {t}
                         </span>
                       ))}
                     </div>
                     <div className="mt-auto flex gap-3 pt-4">
-                      <a href="#" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-2 border border-[#F1EAD6]/40 py-2 font-telegraph text-xs tracking-widest hover:bg-[#F1EAD6] hover:text-[#1A1A1A] transition-colors">
+                      <a href="#" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-2 border border-[#F1EAD6]/40 py-2 font-ui text-xs tracking-widest hover:bg-[#F1EAD6] hover:text-[#1A1A1A] transition-colors">
                         <Code2 size={14} /> CODE
                       </a>
-                      <a href="#" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-2 bg-[#E51B24] py-2 font-telegraph text-xs tracking-widest hover:bg-[#F1EAD6] hover:text-[#1A1A1A] transition-colors">
+                      <a href="#" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-2 bg-[#E51B24] py-2 font-ui text-xs tracking-widest hover:bg-[#F1EAD6] hover:text-[#1A1A1A] transition-colors">
                         <ExternalLink size={14} /> LIVE
                       </a>
                     </div>

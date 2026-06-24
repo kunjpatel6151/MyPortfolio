@@ -28,13 +28,13 @@ export function About() {
 
         {/* Bio */}
         <div>
-          <p className="font-telegraph text-[#E51B24] tracking-[0.4em] text-xs uppercase mb-3">
+          <p className="font-ui text-[#E51B24] tracking-[0.4em] text-xs uppercase mb-3">
             — Telegram from the Territory —
           </p>
           <h3 className="font-western text-5xl text-[#1A1A1A] mb-6 leading-tight">
             The Story Of An Outlaw Engineer
           </h3>
-          <div className="space-y-4 font-serif text-[#1A1A1A]/85 text-base leading-relaxed">
+          <div className="space-y-4 font-body text-[#1A1A1A]/85 text-base leading-relaxed">
             <p>
               Born in the dust of dial-up modems and raised by the campfire glow of a CRT
               monitor — I've ridden through every frontier the trade has to offer.
@@ -50,8 +50,8 @@ export function About() {
             {timeline.map((t) => (
               <li key={t.year} className="relative">
                 <span className="absolute -left-[34px] top-1 w-4 h-4 rounded-full bg-[#E51B24] border-2 border-[#1A1A1A]" />
-                <p className="font-western text-xl text-[#E51B24]">{t.year}</p>
-                <p className="font-serif text-[#1A1A1A]/85">{t.text}</p>
+                <p className="font-subheading text-xl text-[#E51B24]">{t.year}</p>
+                <p className="font-body text-[#1A1A1A]/85">{t.text}</p>
               </li>
             ))}
           </ol>
