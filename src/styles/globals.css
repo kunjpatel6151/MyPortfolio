@@ -74,43 +74,14 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@theme inline {
+
+
+:root {
+  --radius: 0.25rem;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-blood: var(--blood);
-  --color-parchment: var(--parchment);
-  --color-ink: var(--ink);
-  --color-gold: var(--gold);
-  --font-heading: var(--font-heading);
-  --font-subheading: var(--font-subheading);
-  --font-body: var(--font-body);
-  --font-ui: var(--font-ui);
-  --font-script: var(--font-script);
-}
-
-:root {
-  --radius: 0.25rem;
 
   /* Western palette */
   --blood: oklch(0.55 0.22 27);          /* #E51B24 */
@@ -165,8 +136,8 @@
     scroll-behavior: smooth; 
   }
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--ink);
+    color: var(--foreground);
     font-family: var(--font-body);
     overflow-x: hidden;
   }
@@ -232,7 +203,14 @@
     radial-gradient(circle at 0% 100%, transparent 0 8px, #000 12px),
     radial-gradient(circle at 100% 100%, transparent 0 8px, #000 12px),
     linear-gradient(#000,#000);
+  mask-image:
+    radial-gradient(circle at 0% 0%, transparent 0 8px, #000 12px),
+    radial-gradient(circle at 100% 0%, transparent 0 8px, #000 12px),
+    radial-gradient(circle at 0% 100%, transparent 0 8px, #000 12px),
+    radial-gradient(circle at 100% 100%, transparent 0 8px, #000 12px),
+    linear-gradient(#000,#000);
   -webkit-mask-composite: source-over;
+  mask-composite: add;
 }
 
 .ornate-border {
@@ -253,7 +231,10 @@
   50% { opacity: 0.8; }
 }
 
-@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes spin-slow { 
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); } 
+}
 .spin-slow { animation: spin-slow 1.6s linear infinite; }
 
 /* Atmospheric Haze Pulse */
