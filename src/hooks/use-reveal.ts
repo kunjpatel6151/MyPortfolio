@@ -10,11 +10,12 @@ export function useReveal<T extends HTMLElement = HTMLElement>() {
         entries.forEach((e) => {
           if (e.isIntersecting) {
             e.target.classList.add("in");
-            io.unobserve(e.target);
+          } else {
+            e.target.classList.remove("in");
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.25 }
     );
     io.observe(el);
     // also observe direct children with .reveal so groups reveal too

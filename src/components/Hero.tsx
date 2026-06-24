@@ -45,8 +45,8 @@ export function Hero() {
   }, []);
 
   return (
-    <section 
-      id="home" 
+    <section
+      id="home"
       className="relative h-screen w-full overflow-hidden bg-[#0A0401] film-grain"
     >
       {/* Background ambient sunset glow */}
@@ -74,10 +74,10 @@ export function Hero() {
             outerClasses = "translate-x-0 blur-none transition-all duration-[900ms] ease-[cubic-bezier(0.65,0,0.35,1)] z-10";
           } else if (isPrevious) {
             // Previous slide exiting left: blurred
-            outerClasses = "-translate-x-[100vw] blur-[6px] transition-all duration-[900ms] ease-[cubic-bezier(0.65,0,0.35,1)] z-10";
+            outerClasses = "-translate-x-full blur-[6px] transition-all duration-[900ms] ease-[cubic-bezier(0.65,0,0.35,1)] z-10";
           } else {
             // Next slides instantly wait on the right (already blurred)
-            outerClasses = "translate-x-[100vw] blur-[6px] transition-none z-0";
+            outerClasses = "translate-x-full blur-[6px] transition-none z-0";
           }
 
           return (

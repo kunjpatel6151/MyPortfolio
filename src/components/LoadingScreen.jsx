@@ -72,7 +72,7 @@ const LoadingScreen = ({ onComplete }) => {
       style={{
         position: 'fixed',
         inset: 0,
-        width: '100vw',
+        width: '100%',
         height: '100vh',
         zIndex: 9999,
         overflow: 'hidden',

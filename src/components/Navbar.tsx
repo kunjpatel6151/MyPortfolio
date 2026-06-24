@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { SheriffBadge } from "./SheriffBadge";
 
 const links = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
+  { href: "#achievements", label: "Achievements" },
+  { href: "#certifications", label: "Certifications" },
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
 ];
@@ -13,7 +16,6 @@ const links = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [dark, setDark] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -21,10 +23,6 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-  }, [dark]);
 
   return (
     <header
@@ -34,9 +32,9 @@ export function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-5 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-3 group">
-          <SheriffBadge initials="JD" size={42} />
+          <SheriffBadge initials="KP" size={42} />
           <span className="font-western text-[#F1EAD6] text-lg hidden sm:block group-hover:text-[#E51B24] transition-colors">
-            J. Drifter
+            Kunj Patel
           </span>
         </a>
 
@@ -53,11 +51,12 @@ export function Navbar() {
           ))}
           <li>
             <button
-              onClick={() => setDark(!dark)}
-              aria-label="Toggle theme"
-              className="text-[#F1EAD6]/80 hover:text-[#E51B24] transition-colors"
+              onClick={() => {
+                // TODO: Add resume download logic
+              }}
+              className="flex items-center justify-center font-ui text-xs tracking-[0.2em] uppercase text-[#F1EAD6] px-4 py-1.5 border border-[#F1EAD6]/30 hover:border-[#E51B24] hover:text-[#E51B24] hover:bg-[#E51B24]/10 transition-colors duration-300"
             >
-              {dark ? <Sun size={18} /> : <Moon size={18} />}
+              Resume
             </button>
           </li>
         </ul>
@@ -85,6 +84,17 @@ export function Navbar() {
                 </a>
               </li>
             ))}
+            <li className="pt-4 border-t border-[#1A1A1A]/10">
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  // TODO: Add resume download logic
+                }}
+                className="w-full flex items-center justify-center font-ui text-sm tracking-[0.2em] uppercase text-[#1A1A1A] px-4 py-3 border border-[#1A1A1A]/30 hover:border-[#E51B24] hover:text-[#E51B24] hover:bg-[#E51B24]/5 transition-colors duration-300"
+              >
+                Resume
+              </button>
+            </li>
           </ul>
         </div>
       )}
