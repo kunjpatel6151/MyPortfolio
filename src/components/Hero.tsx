@@ -1,10 +1,14 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { ChevronDown } from "lucide-react";
+import { smoothScrollTo } from "@/utils/smooth-scroll";
 import heroSlide1 from "@/assets/image/Hero Section 1.png";
 import heroSlide2 from "@/assets/image/Hero Section 2.png";
 import heroSlide3 from "@/assets/image/Hero Section 3.png";
+import heroSlide4 from "@/assets/image/Hero Section 4.png";
+import heroSlide5 from "@/assets/image/Hero Section 5.png";
+import heroSlide6 from "@/assets/image/Hero Section 6.png";
 
-const desktopSlides = [heroSlide1, heroSlide2, heroSlide3];
+const desktopSlides = [heroSlide1, heroSlide2, heroSlide3, heroSlide4, heroSlide5, heroSlide6];
 const SLIDE_DURATION = 7200;
 
 export function Hero() {
@@ -13,6 +17,11 @@ export function Hero() {
 
   useEffect(() => {
     setIsLoaded(true);
+    // Preload all hero images for seamless transitions
+    desktopSlides.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
   }, []);
 
   // Automated scene-to-scene transition
@@ -123,12 +132,14 @@ export function Hero() {
         <div className={`mt-10 flex flex-wrap gap-4 hero-content-hide ${isLoaded ? 'hero-fade-up-4' : ''}`}>
           <a
             href="#projects"
+            onClick={(e) => { e.preventDefault(); smoothScrollTo("projects"); }}
             className="group relative font-subheading tracking-wide text-sm bg-[#E51B24] text-[#F1EAD6] px-8 py-4 border-2 border-[#F1EAD6]/20 hover:bg-[#F1EAD6] hover:text-[#1A1A1A] transition-all duration-300 shadow-[0_8px_30px_rgba(229,27,36,0.45)]"
           >
             View The Bounties
           </a>
           <a
             href="#contact"
+            onClick={(e) => { e.preventDefault(); smoothScrollTo("contact"); }}
             className="font-subheading tracking-wide text-sm border-2 border-[#F1EAD6]/60 text-[#F1EAD6] px-8 py-4 hover:bg-[#F1EAD6] hover:text-[#1A1A1A] transition-all duration-300"
           >
             Send A Telegram

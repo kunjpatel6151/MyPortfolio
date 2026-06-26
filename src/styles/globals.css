@@ -298,3 +298,144 @@
   50% { opacity: 0.92; }
 }
 .flicker { animation: flicker 3s ease-in-out infinite; }
+
+/* ══════════════════════════════════════════════════════════
+   ABOUT SECTION — Cinematic Reveal Animations
+   All animations replay on every viewport entry via .in toggle
+   ══════════════════════════════════════════════════════════ */
+
+/* --- Reset States (before .in is applied) --- */
+.about-reveal .about-poster,
+.about-reveal .about-bio {
+  opacity: 0;
+}
+
+.about-reveal .about-timeline-line {
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.about-reveal .about-timeline-dot {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.about-reveal .about-timeline-year {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.about-reveal .about-timeline-text {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* --- 1. Wanted Poster: Slide in from left with slight rotation correction --- */
+@keyframes about-poster-in {
+  from {
+    opacity: 0;
+    transform: translateX(-60px) rotate(-3deg);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(4px) rotate(0.3deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+.about-reveal.in .about-poster {
+  animation: about-poster-in 850ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* --- 2. Bio Description: Slide in from right with upward settle --- */
+@keyframes about-bio-in {
+  from {
+    opacity: 0;
+    transform: translate(40px, 12px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.about-reveal.in .about-bio {
+  animation: about-bio-in 800ms cubic-bezier(0.22, 1, 0.36, 1) 200ms forwards;
+}
+
+/* --- 3. Timeline Line: Draw downward from top --- */
+@keyframes about-timeline-draw {
+  from {
+    opacity: 1;
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.about-reveal.in .about-timeline-line {
+  animation: about-timeline-draw 700ms cubic-bezier(0.22, 1, 0.36, 1) 600ms forwards;
+}
+
+/* --- 4. Timeline Dots: Scale up with fade + subtle overshoot --- */
+@keyframes about-dot-pop {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  40% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.about-reveal.in .about-timeline-dot {
+  animation: about-dot-pop 450ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(900ms + var(--dot-index) * 150ms);
+}
+
+/* --- 5. Timeline Year Text: Fade + slide from left --- */
+@keyframes about-year-in {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.about-reveal.in .about-timeline-year {
+  animation: about-year-in 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(950ms + var(--year-index) * 150ms);
+}
+
+/* --- 6. Timeline Description Text: Fade + slide upward --- */
+@keyframes about-text-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-reveal.in .about-timeline-text {
+  animation: about-text-in 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(1050ms + var(--text-index) * 150ms);
+}

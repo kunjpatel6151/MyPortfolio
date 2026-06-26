@@ -1,4 +1,4 @@
-export function SheriffBadge({ initials = "JD", size = 44 }: { initials?: string; size?: number }) {
+export function SheriffBadge({ initials = "KP", size = 44 }: { initials?: string; size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" className="drop-shadow-md">
       <defs>
