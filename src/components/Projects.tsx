@@ -22,19 +22,19 @@ export function Projects() {
   const filtered = active === "All" ? projects : projects.filter((p) => p.cat === active);
 
   return (
-    <section id="projects" ref={ref} className="relative py-28 px-6 bg-[#F1EAD6] reveal">
+    <section id="projects" ref={ref} className="relative py-28 px-6 bg-[#F1EAD6] s-reveal">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <p className="font-ui text-[#E51B24] tracking-[0.4em] text-xs uppercase">
+          <p className="s-accent font-ui text-[#E51B24] tracking-[0.4em] text-xs uppercase">
             — Sheriff's Office —
           </p>
-          <h2 className="font-western text-5xl sm:text-6xl mt-3 text-[#1A1A1A]">The Bounty Board</h2>
-          <p className="font-body italic text-[#1A1A1A]/65 mt-3 max-w-xl mx-auto">
+          <h2 className="s-heading font-western text-5xl sm:text-6xl mt-3 text-[#1A1A1A]">The Bounty Board</h2>
+          <p className="s-subtitle font-body italic text-[#1A1A1A]/65 mt-3 max-w-xl mx-auto">
             Wanted: these projects, brought in dead or alive — preferably shipped.
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <div className="s-content flex flex-wrap justify-center gap-2 mb-12">
           {cats.map((c) => (
             <button
               key={c}
@@ -51,12 +51,13 @@ export function Projects() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filtered.map((p) => {
+          {filtered.map((p, i) => {
             const isFlip = flipped === p.title;
             return (
               <div
                 key={p.title}
-                className="reveal-child group [perspective:1200px] h-[420px]"
+                className="s-card group [perspective:1200px] h-[420px]"
+                style={{ "--card-i": i } as React.CSSProperties}
                 onMouseEnter={() => setFlipped(p.title)}
                 onMouseLeave={() => setFlipped(null)}
                 onClick={() => setFlipped(isFlip ? null : p.title)}

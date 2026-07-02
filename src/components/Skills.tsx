@@ -75,24 +75,25 @@ export function Skills() {
     <section
       id="skills"
       ref={ref}
-      className="relative py-28 px-6 bg-[#1A1A1A] text-[#F1EAD6] film-grain overflow-hidden reveal"
+      className="relative py-28 px-6 bg-[#1A1A1A] text-[#F1EAD6] film-grain overflow-hidden s-reveal"
     >
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <p className="font-ui text-[#E51B24] tracking-[0.4em] text-xs uppercase">
+          <p className="s-accent font-ui text-[#E51B24] tracking-[0.4em] text-xs uppercase">
             — Inventory —
           </p>
-          <h2 className="font-western text-5xl sm:text-6xl mt-3">The Saddlebag</h2>
-          <p className="font-body italic text-[#F1EAD6]/60 mt-3 max-w-xl mx-auto">
+          <h2 className="s-heading font-western text-5xl sm:text-6xl mt-3">The Saddlebag</h2>
+          <p className="s-subtitle font-body italic text-[#F1EAD6]/60 mt-3 max-w-xl mx-auto">
             Every outlaw needs his tools. Here's what I keep loaded and ready.
           </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categories.map(({ icon: Icon, name, items }) => (
+          {categories.map(({ icon: Icon, name, items }, i) => (
             <div
               key={name}
-              className="reveal-child group relative bg-gradient-to-br from-[#222] to-[#161616] border border-[#F1EAD6]/10 p-6 hover:border-[#E51B24]/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_50px_-12px_rgba(229,27,36,0.4)]"
+              className="s-card group relative bg-gradient-to-br from-[#222] to-[#161616] border border-[#F1EAD6]/10 p-6 hover:border-[#E51B24]/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_50px_-12px_rgba(229,27,36,0.4)]"
+              style={{ "--card-i": i } as React.CSSProperties}
             >
               <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#E51B24] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="flex items-center gap-3 mb-5">

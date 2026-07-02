@@ -439,3 +439,153 @@
   animation: about-text-in 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: calc(1050ms + var(--text-index) * 150ms);
 }
+
+/* ══════════════════════════════════════════════════════════
+   SHARED CINEMATIC KEYFRAMES
+   Reusable animation primitives for all sections
+   ══════════════════════════════════════════════════════════ */
+
+@keyframes cin-fade-up {
+  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes cin-fade-left {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes cin-fade-right {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes cin-scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes cin-line-draw {
+  from { opacity: 1; transform: scaleY(0); }
+  to   { opacity: 1; transform: scaleY(1); }
+}
+
+/* Shared easing token */
+/* cubic-bezier(0.22, 1, 0.36, 1) = "cinematic ease" */
+
+/* ══════════════════════════════════════════════════════════
+   SECTION REVEAL CLASSES — Applied per-section
+   .s-reveal = section-level reveal container
+   .s-heading, .s-accent, .s-subtitle = heading block elements
+   .s-card = staggered card/item  
+   ══════════════════════════════════════════════════════════ */
+
+/* --- Base reset for all s-reveal sections --- */
+.s-reveal .s-heading,
+.s-reveal .s-accent,
+.s-reveal .s-subtitle,
+.s-reveal .s-content,
+.s-reveal .s-card,
+.s-reveal .s-left,
+.s-reveal .s-right {
+  opacity: 0;
+}
+
+/* --- Heading: fade-up with micro-scale --- */
+.s-reveal.in .s-heading {
+  animation: cin-fade-up 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* --- Accent label above heading --- */
+.s-reveal.in .s-accent {
+  animation: cin-fade-up 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* --- Subtitle below heading --- */
+.s-reveal.in .s-subtitle {
+  animation: cin-fade-up 650ms cubic-bezier(0.22, 1, 0.36, 1) 150ms forwards;
+}
+
+/* --- Generic content block --- */
+.s-reveal.in .s-content {
+  animation: cin-fade-up 700ms cubic-bezier(0.22, 1, 0.36, 1) 300ms forwards;
+}
+
+/* --- Left-entering element --- */
+.s-reveal.in .s-left {
+  animation: cin-fade-left 750ms cubic-bezier(0.22, 1, 0.36, 1) 300ms forwards;
+}
+
+/* --- Right-entering element --- */
+.s-reveal.in .s-right {
+  animation: cin-fade-right 750ms cubic-bezier(0.22, 1, 0.36, 1) 300ms forwards;
+}
+
+/* --- Staggered cards: uses --card-i for delay --- */
+.s-reveal.in .s-card {
+  animation: cin-fade-up 650ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(250ms + var(--card-i, 0) * 120ms);
+}
+
+/* ══════════════════════════════════════════════════════════
+   EXPERIENCE SECTION — Timeline Enhancements
+   ══════════════════════════════════════════════════════════ */
+
+.s-reveal .s-timeline-line {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.s-reveal .s-timeline-node {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.s-reveal .s-timeline-card {
+  opacity: 0;
+}
+
+.s-reveal.in .s-timeline-line {
+  animation: cin-line-draw 800ms cubic-bezier(0.22, 1, 0.36, 1) 200ms forwards;
+}
+
+.s-reveal.in .s-timeline-node {
+  animation: about-dot-pop 450ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(500ms + var(--node-i, 0) * 200ms);
+}
+
+.s-reveal.in .s-timeline-card {
+  animation: cin-fade-up 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(600ms + var(--card-i, 0) * 200ms);
+}
+
+/* ══════════════════════════════════════════════════════════
+   CONTACT SECTION — Split Layout
+   ══════════════════════════════════════════════════════════ */
+
+.s-reveal .s-form {
+  opacity: 0;
+}
+
+.s-reveal .s-socials {
+  opacity: 0;
+}
+
+.s-reveal .s-social-item {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.s-reveal.in .s-form {
+  animation: cin-fade-left 800ms cubic-bezier(0.22, 1, 0.36, 1) 250ms forwards;
+}
+
+.s-reveal.in .s-socials {
+  animation: cin-fade-right 700ms cubic-bezier(0.22, 1, 0.36, 1) 350ms forwards;
+}
+
+.s-reveal.in .s-social-item {
+  animation: cin-fade-right 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(500ms + var(--social-i, 0) * 100ms);
+}
